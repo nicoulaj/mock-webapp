@@ -1,0 +1,24 @@
+-classpath
+'/home/nicoulaj/projects/mock-webapp/target/classes:/home/nicoulaj/.m2/repository/javax/xml/bind/jaxb-api/2.2.2/jaxb-api-2.2.2.jar:/home/nicoulaj/.m2/repository/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar:/home/nicoulaj/.m2/repository/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar:/home/nicoulaj/.m2/repository/com/sun/xml/bind/jaxb-impl/2.2.2/jaxb-impl-2.2.2.jar:/home/nicoulaj/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar:/home/nicoulaj/.m2/repository/commons-vfs/commons-vfs/1.0/commons-vfs-1.0.jar:/home/nicoulaj/.m2/repository/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/home/nicoulaj/projects/mock-webapp/src/main/java:/home/nicoulaj/projects/mock-webapp/target/schemas'
+-author
+-bottom
+'Copyright &#169; 2011. All Rights Reserved.'
+-charset
+'UTF-8'
+-d
+'/home/nicoulaj/projects/mock-webapp/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'mock-webapp 1.0.0-SNAPSHOT API'
+-link
+'http://java.sun.com/j2se/1.5.0/docs/api'
+-use
+-version
+-windowtitle
+'mock-webapp 1.0.0-SNAPSHOT API'
