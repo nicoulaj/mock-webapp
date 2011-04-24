@@ -18,10 +18,7 @@ package net.nicoulaj.benchmark.mockwebapp.config;
 import net.nicoulaj.benchmark.mockwebapp.config.then.DelayAction;
 import net.nicoulaj.benchmark.mockwebapp.config.then.RandomDelayAction;
 import net.nicoulaj.benchmark.mockwebapp.config.then.ThenStatement;
-import net.nicoulaj.benchmark.mockwebapp.config.when.HeaderCondition;
-import net.nicoulaj.benchmark.mockwebapp.config.when.MethodCondition;
-import net.nicoulaj.benchmark.mockwebapp.config.when.URLCondition;
-import net.nicoulaj.benchmark.mockwebapp.config.when.WhenStatement;
+import net.nicoulaj.benchmark.mockwebapp.config.when.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,7 +47,8 @@ public class Mapping {
     @XmlElements({
                          @XmlElement(name = "url", type = URLCondition.class),
                          @XmlElement(name = "header", type = HeaderCondition.class),
-                         @XmlElement(name = "method", type = MethodCondition.class)
+                         @XmlElement(name = "method", type = MethodCondition.class),
+                         @XmlElement(name = "remote-address", type = RemoteAddressCondition.class)
                  })
     public List<WhenStatement> whenStatements;
 
