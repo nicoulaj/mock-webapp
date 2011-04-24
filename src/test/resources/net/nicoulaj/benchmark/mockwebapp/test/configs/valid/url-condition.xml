@@ -20,31 +20,10 @@
 
   <mapping>
     <when>
-      <url>/delay/100</url>
+      <url>/.*</url>
     </when>
     <then>
-      <delay>100</delay>
-    </then>
-  </mapping>
-
-  <mapping>
-    <when>
-      <url>/delay/200</url>
-    </when>
-    <then>
-      <delay>200</delay>
-    </then>
-  </mapping>
-
-  <mapping>
-    <when>
-      <url>/delay/random</url>
-    </when>
-    <then>
-      <random-delay>
-        <min>100</min>
-        <max>500</max>
-      </random-delay>
+      <status>200</status>
     </then>
   </mapping>
 

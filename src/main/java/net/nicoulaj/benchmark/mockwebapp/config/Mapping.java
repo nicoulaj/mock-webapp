@@ -17,6 +17,7 @@ package net.nicoulaj.benchmark.mockwebapp.config;
 
 import net.nicoulaj.benchmark.mockwebapp.config.then.DelayAction;
 import net.nicoulaj.benchmark.mockwebapp.config.then.RandomDelayAction;
+import net.nicoulaj.benchmark.mockwebapp.config.then.StatusAction;
 import net.nicoulaj.benchmark.mockwebapp.config.then.ThenStatement;
 import net.nicoulaj.benchmark.mockwebapp.config.when.*;
 
@@ -59,6 +60,7 @@ public class Mapping {
      */
     @XmlElementWrapper(name = "then")
     @XmlElements({
+                         @XmlElement(name = "status", type = StatusAction.class),
                          @XmlElement(name = "delay", type = DelayAction.class),
                          @XmlElement(name = "random-delay", type = RandomDelayAction.class)
                  })
