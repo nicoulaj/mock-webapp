@@ -42,7 +42,7 @@
 <a class="jxr_linenumber" name="32" href="#32">32</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="33" href="#33">33</a>  <em class="jxr_javadoccomment">     * The name of the HTTP request header to check.</em>
 <a class="jxr_linenumber" name="34" href="#34">34</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="35" href="#35">35</a>      @XmlAttribute
+<a class="jxr_linenumber" name="35" href="#35">35</a>      @XmlAttribute(required = <strong class="jxr_keyword">true</strong>)
 <a class="jxr_linenumber" name="36" href="#36">36</a>      <strong class="jxr_keyword">public</strong> String name;
 <a class="jxr_linenumber" name="37" href="#37">37</a>  
 <a class="jxr_linenumber" name="38" href="#38">38</a>      <em class="jxr_javadoccomment">/**</em>
@@ -62,28 +62,39 @@
 <a class="jxr_linenumber" name="52" href="#52">52</a>      <strong class="jxr_keyword">protected</strong> Pattern compiledPattern;
 <a class="jxr_linenumber" name="53" href="#53">53</a>  
 <a class="jxr_linenumber" name="54" href="#54">54</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="55" href="#55">55</a>  <em class="jxr_javadoccomment">     * Test whether the given {@link HttpServletRequest} matches this statement.</em>
-<a class="jxr_linenumber" name="56" href="#56">56</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="57" href="#57">57</a>  <em class="jxr_javadoccomment">     * @param req the {@link HttpServletRequest} to process.</em>
-<a class="jxr_linenumber" name="58" href="#58">58</a>  <em class="jxr_javadoccomment">     * @return true if:</em>
-<a class="jxr_linenumber" name="59" href="#59">59</a>  <em class="jxr_javadoccomment">     *         &lt;ul&gt;</em>
-<a class="jxr_linenumber" name="60" href="#60">60</a>  <em class="jxr_javadoccomment">     *         &lt;li&gt;No {@link #pattern} was given and the header is present.</em>
-<a class="jxr_linenumber" name="61" href="#61">61</a>  <em class="jxr_javadoccomment">     *         &lt;li&gt;A {@link #pattern} was given and the header is present and matches the pattern.</em>
-<a class="jxr_linenumber" name="62" href="#62">62</a>  <em class="jxr_javadoccomment">     *         &lt;/ul&gt;</em>
-<a class="jxr_linenumber" name="63" href="#63">63</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="64" href="#64">64</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> matches(HttpServletRequest req) {
-<a class="jxr_linenumber" name="65" href="#65">65</a>          <strong class="jxr_keyword">final</strong> String headerValue = req.getHeader(name);
-<a class="jxr_linenumber" name="66" href="#66">66</a>          <strong class="jxr_keyword">if</strong> (headerValue != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="67" href="#67">67</a>              <strong class="jxr_keyword">if</strong> (pattern != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="68" href="#68">68</a>                  <strong class="jxr_keyword">if</strong> (compiledPattern == <strong class="jxr_keyword">null</strong>) compiledPattern = Pattern.compile(pattern);
-<a class="jxr_linenumber" name="69" href="#69">69</a>                  <strong class="jxr_keyword">return</strong> compiledPattern.matcher(headerValue).matches();
-<a class="jxr_linenumber" name="70" href="#70">70</a>              } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="71" href="#71">71</a>                  <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
-<a class="jxr_linenumber" name="72" href="#72">72</a>              }
-<a class="jxr_linenumber" name="73" href="#73">73</a>          }
-<a class="jxr_linenumber" name="74" href="#74">74</a>          <strong class="jxr_keyword">return</strong> false;
-<a class="jxr_linenumber" name="75" href="#75">75</a>      }
-<a class="jxr_linenumber" name="76" href="#76">76</a>  }
+<a class="jxr_linenumber" name="55" href="#55">55</a>  <em class="jxr_javadoccomment">     * Assert this {@link HeaderCondition} is valid.</em>
+<a class="jxr_linenumber" name="56" href="#56">56</a>  <em class="jxr_javadoccomment">     * &lt;p/&gt;</em>
+<a class="jxr_linenumber" name="57" href="#57">57</a>  <em class="jxr_javadoccomment">     * Checks everything that cannot be enforced through the XML schema.</em>
+<a class="jxr_linenumber" name="58" href="#58">58</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="59" href="#59">59</a>  <em class="jxr_javadoccomment">     * @throws Throwable if an element of the {@link HeaderCondition} is invalid.</em>
+<a class="jxr_linenumber" name="60" href="#60">60</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="61" href="#61">61</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> validate() <strong class="jxr_keyword">throws</strong> Throwable {
+<a class="jxr_linenumber" name="62" href="#62">62</a>          assert name.length() &gt; 0 : <span class="jxr_string">"The header name must not be empty"</span>;
+<a class="jxr_linenumber" name="63" href="#63">63</a>      }
+<a class="jxr_linenumber" name="64" href="#64">64</a>  
+<a class="jxr_linenumber" name="65" href="#65">65</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="66" href="#66">66</a>  <em class="jxr_javadoccomment">     * Test whether the given {@link HttpServletRequest} matches this statement.</em>
+<a class="jxr_linenumber" name="67" href="#67">67</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="68" href="#68">68</a>  <em class="jxr_javadoccomment">     * @param req the {@link HttpServletRequest} to process.</em>
+<a class="jxr_linenumber" name="69" href="#69">69</a>  <em class="jxr_javadoccomment">     * @return true if:</em>
+<a class="jxr_linenumber" name="70" href="#70">70</a>  <em class="jxr_javadoccomment">     *         &lt;ul&gt;</em>
+<a class="jxr_linenumber" name="71" href="#71">71</a>  <em class="jxr_javadoccomment">     *         &lt;li&gt;No {@link #pattern} was given and the header is present.</em>
+<a class="jxr_linenumber" name="72" href="#72">72</a>  <em class="jxr_javadoccomment">     *         &lt;li&gt;A {@link #pattern} was given and the header is present and matches the pattern.</em>
+<a class="jxr_linenumber" name="73" href="#73">73</a>  <em class="jxr_javadoccomment">     *         &lt;/ul&gt;</em>
+<a class="jxr_linenumber" name="74" href="#74">74</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="75" href="#75">75</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> matches(HttpServletRequest req) {
+<a class="jxr_linenumber" name="76" href="#76">76</a>          <strong class="jxr_keyword">final</strong> String headerValue = req.getHeader(name);
+<a class="jxr_linenumber" name="77" href="#77">77</a>          <strong class="jxr_keyword">if</strong> (headerValue != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="78" href="#78">78</a>              <strong class="jxr_keyword">if</strong> (pattern != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="79" href="#79">79</a>                  <strong class="jxr_keyword">if</strong> (compiledPattern == <strong class="jxr_keyword">null</strong>) compiledPattern = Pattern.compile(pattern);
+<a class="jxr_linenumber" name="80" href="#80">80</a>                  <strong class="jxr_keyword">return</strong> compiledPattern.matcher(headerValue).matches();
+<a class="jxr_linenumber" name="81" href="#81">81</a>              } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="82" href="#82">82</a>                  <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="83" href="#83">83</a>              }
+<a class="jxr_linenumber" name="84" href="#84">84</a>          }
+<a class="jxr_linenumber" name="85" href="#85">85</a>          <strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="86" href="#86">86</a>      }
+<a class="jxr_linenumber" name="87" href="#87">87</a>  }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
