@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import static org.testng.Assert.*;
 
 /**
- * Tests for {@link MockWebAppConfig.Parser}.
+ * Tests for {@link MockWebAppConfig} parsing and validation.
  *
  * @author Julien Nicoulaud <julien.nicoulaud@gmail.com>
  * @since 1.0.0
