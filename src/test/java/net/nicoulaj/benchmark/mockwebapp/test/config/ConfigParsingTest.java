@@ -23,6 +23,7 @@ import net.nicoulaj.benchmark.mockwebapp.test.AbstractMockWebAppTest;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import static org.testng.Assert.*;
 
@@ -89,5 +90,48 @@ public class ConfigParsingTest extends AbstractMockWebAppTest {
                 assertTrue(processor instanceof ThenStatement, "then statement with wrong type");
             }
         }
+    }
+
+    /**
+     * Assert validating a {@link MockWebAppConfig} without any {@link Mapping} defined throws an error.
+     *
+     * @throws Throwable should always happen.
+     */
+    @Test(expectedExceptions = Throwable.class,
+          expectedExceptionsMessageRegExp = "At least one mapping should be declared")
+    public void configWithoutMappingsShouldBeInvalid() throws Throwable {
+        new MockWebAppConfig().validate();
+    }
+
+    /**
+     * Assert validating a {@link MockWebAppConfig} with a {@link Mapping}  without any {@link WhenStatement}
+     * defined throws an error.
+     *
+     * @param file the valid config file to use for the test.
+     * @throws Throwable should always happen.
+     */
+    @Test(dataProvider = "validConfigFilesDataProvider",
+          expectedExceptions = Throwable.class,
+          expectedExceptionsMessageRegExp = "\"when\" statements list is empty")
+    public void mappingWithoutWhenStatementShouldBeInvalid(File file) throws Throwable {
+        final MockWebAppConfig cfg = MockWebAppConfig.Parser.parseConfig(file);
+        cfg.mappings.get(0).whenStatements = new ArrayList<WhenStatement>();
+        cfg.validate();
+    }
+
+    /**
+     * Assert validating a {@link MockWebAppConfig} with a {@link Mapping}  without any {@link ThenStatement}
+     * defined throws an error.
+     *
+     * @param file the valid config file to use for the test.
+     * @throws Throwable should always happen.
+     */
+    @Test(dataProvider = "validConfigFilesDataProvider",
+          expectedExceptions = Throwable.class,
+          expectedExceptionsMessageRegExp = "\"then\" statements list is empty")
+    public void mappingWithoutThenStatementShouldBeInvalid(File file) throws Throwable {
+        final MockWebAppConfig cfg = MockWebAppConfig.Parser.parseConfig(file);
+        cfg.mappings.get(0).thenStatements = new ArrayList<ThenStatement>();
+        cfg.validate();
     }
 }
