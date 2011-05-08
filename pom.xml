@@ -21,7 +21,7 @@
   <parent>
     <groupId>net.ju-n</groupId>
     <artifactId>net-ju-n-parent</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
   </parent>
 
   <groupId>net.ju-n.benchmark</groupId>
@@ -78,6 +78,11 @@
     <dependency>
       <groupId>commons-vfs</groupId>
       <artifactId>commons-vfs</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>de.sven-jacobs</groupId>
+      <artifactId>loremipsum</artifactId>
       <version>1.0</version>
     </dependency>
     <dependency>
@@ -180,7 +185,7 @@
     </extensions>
 
   </build>
-  
+
   <reporting>
     <plugins>
       <plugin>
