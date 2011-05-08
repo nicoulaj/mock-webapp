@@ -37,6 +37,17 @@ public class DelayAction implements ThenStatement {
     public int time;
 
     /**
+     * Assert this {@link DelayAction} is valid.
+     * <p/>
+     * Checks everything that cannot be enforced through the XML schema.
+     *
+     * @throws Throwable if an element of the {@link DelayAction} is invalid.
+     */
+    public void validate() throws Throwable {
+        assert time > 0 : "The delay cannot be negative";
+    }
+
+    /**
      * Process an HTTP request/response.
      * <p/>
      * Sleeps for {@link #time}.

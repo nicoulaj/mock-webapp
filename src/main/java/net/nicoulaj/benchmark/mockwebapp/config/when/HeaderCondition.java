@@ -32,7 +32,7 @@ public class HeaderCondition implements WhenStatement {
     /**
      * The name of the HTTP request header to check.
      */
-    @XmlAttribute
+    @XmlAttribute(required = true)
     public String name;
 
     /**
@@ -50,6 +50,17 @@ public class HeaderCondition implements WhenStatement {
      */
     @XmlTransient
     protected Pattern compiledPattern;
+
+    /**
+     * Assert this {@link HeaderCondition} is valid.
+     * <p/>
+     * Checks everything that cannot be enforced through the XML schema.
+     *
+     * @throws Throwable if an element of the {@link HeaderCondition} is invalid.
+     */
+    public void validate() throws Throwable {
+        assert name.length() > 0 : "The header name must not be empty";
+    }
 
     /**
      * Test whether the given {@link HttpServletRequest} matches this statement.

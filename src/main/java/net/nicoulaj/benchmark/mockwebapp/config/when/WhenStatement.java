@@ -15,6 +15,8 @@
  */
 package net.nicoulaj.benchmark.mockwebapp.config.when;
 
+import net.nicoulaj.benchmark.mockwebapp.config.ConfigFragment;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -24,7 +26,7 @@ import javax.servlet.http.HttpServletRequest;
  * @see net.nicoulaj.benchmark.mockwebapp.config.Mapping#whenStatements
  * @since 1.0.0
  */
-public interface WhenStatement {
+public interface WhenStatement extends ConfigFragment {
 
     /**
      * Test whether the given {@link HttpServletRequest} matches this statement.

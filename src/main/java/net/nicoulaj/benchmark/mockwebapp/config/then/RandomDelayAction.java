@@ -39,14 +39,27 @@ public class RandomDelayAction implements ThenStatement {
     /**
      * The latency lower bound (ms).
      */
-    @XmlElement
+    @XmlElement(required = true, nillable = false)
     public int min;
 
     /**
      * The latency upper bound (ms).
      */
-    @XmlElement
+    @XmlElement(required = true, nillable = false)
     public int max;
+
+    /**
+     * Assert this {@link RandomDelayAction} is valid.
+     * <p/>
+     * Checks everything that cannot be enforced through the XML schema.
+     *
+     * @throws Throwable if an element of the {@link RandomDelayAction} is invalid.
+     */
+    public void validate() throws Throwable {
+        assert min > 0 : "The delay lower bound cannot be negative";
+        assert max > 0 : "The delay upper bound cannot be negative";
+        assert max >= min : "The delay upper bound must be superior to the delay lower bound";
+    }
 
     /**
      * Process an HTTP request/response.

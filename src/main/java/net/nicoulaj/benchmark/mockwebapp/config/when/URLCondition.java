@@ -44,6 +44,17 @@ public class URLCondition implements WhenStatement {
     protected Pattern compiledPattern;
 
     /**
+     * Assert this {@link URLCondition} is valid.
+     * <p/>
+     * Checks everything that cannot be enforced through the XML schema.
+     *
+     * @throws Throwable if an element of the {@link URLCondition} is invalid.
+     */
+    public void validate() throws Throwable {
+        assert pattern != null && pattern.length() > 0 : "The URL pattern must be specified";
+    }
+
+    /**
      * Test whether the given {@link HttpServletRequest} matches this statement.
      *
      * @param req the {@link HttpServletRequest} to process.

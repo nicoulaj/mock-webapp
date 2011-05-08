@@ -41,7 +41,7 @@ import java.util.List;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "mock-web-app")
-public class MockWebAppConfig {
+public class MockWebAppConfig implements ConfigFragment {
 
     /**
      * Strategies for requests matching.
@@ -64,7 +64,7 @@ public class MockWebAppConfig {
     /**
      * Defines the strategy for triggering matched {@link Mapping}s for each request.
      */
-    @XmlElement
+    @XmlElement(required = false, nillable = false, defaultValue = "all")
     public MatchingStrategy matchingStrategy = MatchingStrategy.all;
 
     /**
@@ -91,6 +91,18 @@ public class MockWebAppConfig {
                 if (MatchingStrategy.first.equals(matchingStrategy)) return;
             }
         }
+    }
+
+    /**
+     * Assert this {@link MockWebAppConfig} is valid.
+     * <p/>
+     * Checks everything that cannot be enforced through the XML schema.
+     *
+     * @throws Exception if an element of the {@link MockWebAppConfig} is invalid.
+     */
+    public void validate() throws Throwable {
+        assert mappings != null && !mappings.isEmpty() : "At least one mapping should be declared";
+        for (Mapping mapping : mappings) mapping.validate();
     }
 
     /**
@@ -147,11 +159,21 @@ public class MockWebAppConfig {
             }
 
             // Unmarshall the config file.
+            MockWebAppConfig config;
             try {
-                return (MockWebAppConfig) unmarshaller.unmarshal(file);
+                config = (MockWebAppConfig) unmarshaller.unmarshal(file);
             } catch (Exception e) {
                 throw new Exception("Failed parsing configuration file", e);
             }
+
+            // Validate the config.
+            try {
+                config.validate();
+            } catch (Throwable t) {
+                throw new Exception("Failed validating configuration file", t);
+            }
+
+            return config;
         }
 
         /**

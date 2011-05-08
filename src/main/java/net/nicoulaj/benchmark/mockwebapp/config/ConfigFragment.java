@@ -13,27 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.nicoulaj.benchmark.mockwebapp.config.then;
-
-import net.nicoulaj.benchmark.mockwebapp.config.ConfigFragment;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+package net.nicoulaj.benchmark.mockwebapp.config;
 
 /**
- * A {@link ThenStatement} is a treatment to apply to an HTTP request response.
+ * Represents a part of a Mock web application configuration.
  *
  * @author Julien Nicoulaud <julien.nicoulaud@gmail.com>
- * @see net.nicoulaj.benchmark.mockwebapp.config.Mapping#thenStatements
  * @since 1.0.0
  */
-public interface ThenStatement extends ConfigFragment {
+public interface ConfigFragment {
 
     /**
-     * Process an HTTP request/response.
+     * Assert this {@link ConfigFragment} is valid.
      *
-     * @param req  the {@link HttpServletRequest} to process.
-     * @param resp the {@link HttpServletResponse} to use.
+     * @throws Throwable if an element of the {@link ConfigFragment} is invalid.
      */
-    void process(HttpServletRequest req, HttpServletResponse resp);
+    void validate() throws Throwable;
 }

@@ -36,6 +36,17 @@ public class RemoteAddressCondition implements WhenStatement {
     public String address;
 
     /**
+     * Assert this {@link RemoteAddressCondition} is valid.
+     * <p/>
+     * Checks everything that cannot be enforced through the XML schema.
+     *
+     * @throws Throwable if an element of the {@link RemoteAddressCondition} is invalid.
+     */
+    public void validate() throws Throwable {
+        assert address != null && address.length() > 0 : "The remote address must be specified";
+    }
+
+    /**
      * Test whether the given {@link javax.servlet.http.HttpServletRequest} matches this statement.
      *
      * @param req the {@link javax.servlet.http.HttpServletRequest} to process.

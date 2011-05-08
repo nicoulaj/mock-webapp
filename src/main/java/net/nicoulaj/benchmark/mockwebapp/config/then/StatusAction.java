@@ -37,6 +37,17 @@ public class StatusAction implements ThenStatement {
     public int statusCode;
 
     /**
+     * Assert this {@link StatusAction} is valid.
+     * <p/>
+     * Checks everything that cannot be enforced through the XML schema.
+     *
+     * @throws Throwable if an element of the {@link StatusAction} is invalid.
+     */
+    public void validate() throws Throwable {
+        assert statusCode > 0 : "The HTTP status code cannot be negative";
+    }
+
+    /**
      * Process an HTTP request/response.
      * <p/>
      * Sets the response status to {@link #statusCode}

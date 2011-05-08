@@ -37,14 +37,14 @@ import java.util.List;
  * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Mapping {
+public class Mapping implements ConfigFragment {
 
     /**
      * The list of {@link WhenStatement}s defining what requests should be matched.
      *
      * @see net.nicoulaj.benchmark.mockwebapp.config.when
      */
-    @XmlElementWrapper(name = "when")
+    @XmlElementWrapper(name = "when", required = true, nillable = false)
     @XmlElements({
                          @XmlElement(name = "url", type = URLCondition.class),
                          @XmlElement(name = "header", type = HeaderCondition.class),
@@ -58,13 +58,29 @@ public class Mapping {
      *
      * @see net.nicoulaj.benchmark.mockwebapp.config.then
      */
-    @XmlElementWrapper(name = "then")
+    @XmlElementWrapper(name = "then", required = true, nillable = false)
     @XmlElements({
                          @XmlElement(name = "status", type = StatusAction.class),
                          @XmlElement(name = "delay", type = DelayAction.class),
                          @XmlElement(name = "random-delay", type = RandomDelayAction.class)
                  })
     public List<ThenStatement> thenStatements;
+
+    /**
+     * Assert this {@link Mapping} is valid.
+     * <p/>
+     * Checks everything that cannot be enforced through the XML schema.
+     *
+     * @throws Throwable if an element of the {@link Mapping} is invalid.
+     */
+    public void validate() throws Throwable {
+        assert whenStatements != null : "\"when\" statements list is missing";
+        assert thenStatements != null : "\"then\" statements list is missing";
+        assert !whenStatements.isEmpty() : "\"when\" statements list is empty";
+        assert !thenStatements.isEmpty() : "\"then\" statements list is empty";
+        for (WhenStatement whenStatement : whenStatements) whenStatement.validate();
+        for (ThenStatement thenStatement : thenStatements) thenStatement.validate();
+    }
 
     /**
      * Test whether the given {@link HttpServletRequest} matches this mapping.

@@ -77,6 +77,17 @@ public class MethodCondition implements WhenStatement {
     public HTTPMethod method;
 
     /**
+     * Assert this {@link MethodCondition} is valid.
+     * <p/>
+     * Checks everything that cannot be enforced through the XML schema.
+     *
+     * @throws Throwable if an element of the {@link MethodCondition} is invalid.
+     */
+    public void validate() throws Throwable {
+        assert method != null : "The HTTP method is missing";
+    }
+
+    /**
      * Test whether the given {@link HttpServletRequest} matches this statement.
      *
      * @param req the {@link HttpServletRequest} to process.
