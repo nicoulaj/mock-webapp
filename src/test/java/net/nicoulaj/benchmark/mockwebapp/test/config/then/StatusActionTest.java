@@ -112,4 +112,17 @@ public class StatusActionTest extends AbstractMockWebAppTest {
 
         // FIXME No way to get the status code, even using reflection ? WTF ?
     }
+
+    /**
+     * Assert validating a {@link StatusAction} with a negative HTTP status code setting throws an error.
+     *
+     * @throws Throwable should always happen.
+     */
+    @Test(expectedExceptions = Throwable.class,
+          expectedExceptionsMessageRegExp = "The HTTP status code cannot be negative")
+    public void delayShouldBePositive() throws Throwable {
+        final StatusAction stmt = new StatusAction();
+        stmt.statusCode = -1;
+        stmt.validate();
+    }
 }

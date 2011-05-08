@@ -60,7 +60,7 @@ public class DelayActionTest extends AbstractMockWebAppTest {
      * Assert the time elapsed for processing the request is the right one.
      *
      * @param delay the delay to use for the test.
-     * @throws IOException should never happen.
+     * @throws IOException  should never happen.
      * @throws SAXException should never happen.
      */
     @Test(dataProvider = "delayRangesDataProvider")
@@ -76,5 +76,18 @@ public class DelayActionTest extends AbstractMockWebAppTest {
 
         assertTrue(elapsedTime >= stmt.time);
         assertTrue(elapsedTime <= stmt.time + SAFETY_MARGIN);
+    }
+
+    /**
+     * Assert validating a {@link DelayAction} with a negative delay setting throws an error.
+     *
+     * @throws Throwable should always happen.
+     */
+    @Test(expectedExceptions = Throwable.class,
+          expectedExceptionsMessageRegExp = "The delay cannot be negative")
+    public void delayShouldBePositive() throws Throwable {
+        final DelayAction stmt = new DelayAction();
+        stmt.time = -1;
+        stmt.validate();
     }
 }

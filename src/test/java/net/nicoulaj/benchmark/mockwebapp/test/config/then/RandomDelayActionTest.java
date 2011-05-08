@@ -53,4 +53,46 @@ public class RandomDelayActionTest extends DelayActionTest {
         assertTrue(elapsedTime >= stmt.min);
         assertTrue(elapsedTime <= stmt.max + SAFETY_MARGIN);
     }
+
+    /**
+     * Assert validating a {@link RandomDelayAction} with a negative minimum delay setting throws an error.
+     *
+     * @throws Throwable should always happen.
+     */
+    @Test(expectedExceptions = Throwable.class,
+          expectedExceptionsMessageRegExp = "The delay lower bound cannot be negative")
+    public void minDelayShouldBePositive() throws Throwable {
+        final RandomDelayAction stmt = new RandomDelayAction();
+        stmt.min = -1;
+        stmt.max = 10;
+        stmt.validate();
+    }
+
+    /**
+     * Assert validating a {@link RandomDelayAction} with a negative maximum delay setting throws an error.
+     *
+     * @throws Throwable should always happen.
+     */
+    @Test(expectedExceptions = Throwable.class,
+          expectedExceptionsMessageRegExp = "The delay upper bound cannot be negative")
+    public void maxDelayShouldBePositive() throws Throwable {
+        final RandomDelayAction stmt = new RandomDelayAction();
+        stmt.min = 10;
+        stmt.max = -1;
+        stmt.validate();
+    }
+
+    /**
+     * Assert validating a {@link RandomDelayAction} with a maximum delay lower than the minimum delay throws an error.
+     *
+     * @throws Throwable should always happen.
+     */
+    @Test(expectedExceptions = Throwable.class,
+          expectedExceptionsMessageRegExp = "The delay upper bound must be superior to the delay lower bound")
+    public void maxShouldBeGreaterThanMin() throws Throwable {
+        final RandomDelayAction stmt = new RandomDelayAction();
+        stmt.min = 10;
+        stmt.max = 9;
+        stmt.validate();
+    }
 }
