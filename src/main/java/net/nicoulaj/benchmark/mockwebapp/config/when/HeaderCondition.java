@@ -59,7 +59,7 @@ public class HeaderCondition implements WhenStatement {
      * @throws Throwable if an element of the {@link HeaderCondition} is invalid.
      */
     public void validate() throws Throwable {
-        assert name.length() > 0 : "The header name must not be empty";
+        assert name != null && name.length() > 0 : "The header name must be defined";
     }
 
     /**

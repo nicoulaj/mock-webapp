@@ -115,4 +115,15 @@ public class MethodConditionTest extends AbstractMockWebAppTest {
         methodCondition.method = method;
         assertFalse(methodCondition.matches(getRequest(request)), "A '" + methodCondition.method + "' condition should not match a '" + request.getMethod() + "' request");
     }
+
+    /**
+     * Assert validating a {@link MethodCondition} without HTTP method name throws an error.
+     *
+     * @throws Throwable should always happen.
+     */
+    @Test(expectedExceptions = Throwable.class,
+          expectedExceptionsMessageRegExp = "The HTTP method is missing")
+    public void methodShouldBeDefined() throws Throwable {
+        new MethodCondition().validate();
+    }
 }

@@ -56,4 +56,15 @@ public class URLConditionTest extends AbstractMockWebAppTest {
         stmt.pattern = "/context/.*";
         assertFalse(stmt.matches(getRequest(new GetMethodWebRequest("http://localhost/test"))));
     }
+
+    /**
+     * Assert validating a {@link URLCondition} without URL pattern throws an error.
+     *
+     * @throws Throwable should always happen.
+     */
+    @Test(expectedExceptions = Throwable.class,
+          expectedExceptionsMessageRegExp = "The URL pattern must be specified")
+    public void patternShouldBeDefined() throws Throwable {
+        new URLCondition().validate();
+    }
 }

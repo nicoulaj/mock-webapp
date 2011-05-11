@@ -58,4 +58,15 @@ public class RemoteAddressConditionTest extends AbstractMockWebAppTest {
         stmt.address = "209.85.227.99"; // This is a Google DNS server address
         assertFalse(stmt.matches(getRequest(new GetMethodWebRequest("http://localhost/test"))), "Request with remote address '" + stmt.address + "' should not have been matched");
     }
+
+    /**
+     * Assert validating a {@link RemoteAddressCondition} without remote address throws an error.
+     *
+     * @throws Throwable should always happen.
+     */
+    @Test(expectedExceptions = Throwable.class,
+          expectedExceptionsMessageRegExp = "The remote address must be specified")
+    public void methodShouldBeDefined() throws Throwable {
+        new RemoteAddressCondition().validate();
+    }
 }

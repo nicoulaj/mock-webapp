@@ -102,4 +102,15 @@ public class HeaderConditionTest extends AbstractMockWebAppTest {
         GetMethodWebRequest webRequest = new GetMethodWebRequest("http://localhost/test");
         assertFalse(stmt.matches(getRequest(webRequest)));
     }
+
+    /**
+     * Assert validating a {@link HeaderCondition} without header name throws an error.
+     *
+     * @throws Throwable should always happen.
+     */
+    @Test(expectedExceptions = Throwable.class,
+          expectedExceptionsMessageRegExp = "The header name must be defined")
+    public void headerNameShouldBeDefined() throws Throwable {
+        new HeaderCondition().validate();
+    }
 }
