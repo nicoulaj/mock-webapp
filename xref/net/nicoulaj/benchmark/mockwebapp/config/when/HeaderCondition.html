@@ -69,7 +69,7 @@
 <a class="jxr_linenumber" name="59" href="#59">59</a>  <em class="jxr_javadoccomment">     * @throws Throwable if an element of the {@link HeaderCondition} is invalid.</em>
 <a class="jxr_linenumber" name="60" href="#60">60</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="61" href="#61">61</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> validate() <strong class="jxr_keyword">throws</strong> Throwable {
-<a class="jxr_linenumber" name="62" href="#62">62</a>          assert name.length() &gt; 0 : <span class="jxr_string">"The header name must not be empty"</span>;
+<a class="jxr_linenumber" name="62" href="#62">62</a>          assert name != <strong class="jxr_keyword">null</strong> &amp;&amp; name.length() &gt; 0 : <span class="jxr_string">"The header name must be defined"</span>;
 <a class="jxr_linenumber" name="63" href="#63">63</a>      }
 <a class="jxr_linenumber" name="64" href="#64">64</a>  
 <a class="jxr_linenumber" name="65" href="#65">65</a>      <em class="jxr_javadoccomment">/**</em>
