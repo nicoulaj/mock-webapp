@@ -4,4 +4,4 @@ Deploy ${project.name}
  * Deploy the ${project.artifactId}-${project.version}.${project.packaging} to your favorite servlet container (such as [Tomcat](http://tomcat.apache.org) or [Jetty](http://jetty.codehaus.org)).
  * Start the server with the pah to the configuration file as Java option:
 
-        <start command> -Dmock-web-app-conf=file:path/to/conf/file.xml
+        <start command> -Dmock-web-app-conf=path/to/conf/file.xml
