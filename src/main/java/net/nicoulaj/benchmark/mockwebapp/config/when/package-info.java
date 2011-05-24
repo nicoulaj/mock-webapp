@@ -17,6 +17,14 @@
 /**
  * The conditions that can be used to match requests.
  *
+ * TODO: Implement following {@link WhenStatement}s:
+ *   * Authentication or not
+ *   * Authentication type
+ *   * Protocol
+ *   * Port
+ *   * Request has content
+ *   * Request content matching
+ *
  * @author Julien Nicoulaud <julien.nicoulaud@gmail.com>
  * @since 1.0.0
  */

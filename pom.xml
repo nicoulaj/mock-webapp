@@ -26,11 +26,11 @@
 
   <groupId>net.ju-n.benchmark</groupId>
   <artifactId>mock-webapp</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0-alpha-1-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>mock-webapp</name>
-  <description>Mock web application for performance or integration testing</description>
+  <description>Mock web application for performance or integration testing.</description>
   <url>http://nicoulaj.github.com/mock-webapp</url>
   <inceptionYear>2011</inceptionYear>
 
@@ -59,31 +59,35 @@
     </site>
   </distributionManagement>
 
+  <properties>
+    <java.version>1.5</java.version>
+    <servlet-api.version>2.5</servlet-api.version>
+    <jaxb.version>2.2.2</jaxb.version>
+    <commons-vfs.version>1.0</commons-vfs.version>
+    <httpunit.version>1.7</httpunit.version>
+    <doxia-module-markdown.version>1.0.0</doxia-module-markdown.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
-      <version>2.5</version>
+      <version>${servlet-api.version}</version>
     </dependency>
     <dependency>
       <groupId>javax.xml.bind</groupId>
       <artifactId>jaxb-api</artifactId>
-      <version>2.2.2</version>
+      <version>${jaxb.version}</version>
     </dependency>
     <dependency>
       <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
-      <version>2.2.2</version>
+      <version>${jaxb.version}</version>
     </dependency>
     <dependency>
       <groupId>commons-vfs</groupId>
       <artifactId>commons-vfs</artifactId>
-      <version>1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>de.sven-jacobs</groupId>
-      <artifactId>loremipsum</artifactId>
-      <version>1.0</version>
+      <version>${commons-vfs.version}</version>
     </dependency>
     <dependency>
       <groupId>org.testng</groupId>
@@ -93,7 +97,7 @@
     <dependency>
       <groupId>httpunit</groupId>
       <artifactId>httpunit</artifactId>
-      <version>1.7</version>
+      <version>${httpunit.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -110,8 +114,8 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
           <optimize>true</optimize>
           <showWarnings>true</showWarnings>
           <showDeprecation>true</showDeprecation>
@@ -127,7 +131,6 @@
       <plugin>
         <groupId>com.sun.tools.jxc.maven2</groupId>
         <artifactId>maven-jaxb-schemagen-plugin</artifactId>
-        <version>1.2</version>
         <executions>
           <execution>
             <id>generate-xsd-schema</id>
@@ -177,7 +180,7 @@
           <dependency>
             <groupId>net.ju-n.maven.doxia</groupId>
             <artifactId>doxia-module-markdown</artifactId>
-            <version>1.0.0</version>
+            <version>${doxia-module-markdown.version}</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -240,7 +243,7 @@
         <artifactId>maven-pmd-plugin</artifactId>
         <version>${maven-pmd-plugin.version}</version>
         <configuration>
-          <targetJdk>1.5</targetJdk>
+          <targetJdk>${java.version}</targetJdk>
         </configuration>
       </plugin>
       <plugin>

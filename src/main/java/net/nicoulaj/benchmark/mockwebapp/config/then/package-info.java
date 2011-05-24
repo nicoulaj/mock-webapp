@@ -17,6 +17,18 @@
 /**
  * The treatments that can be applied to requests responses.
  *
+ * TODO: Implement following {@link ThenStatement}s:
+ *   * Response content (random content, lorem ipsum, content from file)
+ *   * Response MIME type
+ *   * Response header
+ *   * Response cookie
+ *   * Response encoding
+ *   * Redirection
+ *   * Gaussian delay
+ *   * Other delay types implementations (user provided, Groovy ?)
+ *   * Memory leak
+ *   * JVM crash
+ *
  * @author Julien Nicoulaud <julien.nicoulaud@gmail.com>
  * @since 1.0.0
  */

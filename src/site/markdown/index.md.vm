@@ -1,4 +1,4 @@
-**mock web application for performance or integration testing.**
+**${project.description}**
 
 Sometimes you need to test how the architecture around your application (frontal server, SSO system, etc)
 behaves in particular situations, that can be hard to reproduce.
@@ -29,11 +29,3 @@ This mock web application can easily be setup to behave as you need, through a s
       </mapping>
 
     </mock-web-app>
-
-
-How to use ?
-------------
-
-1. [Download it](usage/1-download.html)
-2. [Configure it](usage/2-configure.html)
-3. [Deploy it](usage/3-deploy.html)
