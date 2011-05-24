@@ -1,26 +1,26 @@
 -classpath
-'/home/nicoulaj/projects/mock-webapp/target/classes:/home/nicoulaj/projects/mock-webapp/target/test-classes:/home/nicoulaj/.m2/repository/jtidy/jtidy/4aug2000r7-dev/jtidy-4aug2000r7-dev.jar:/home/nicoulaj/.m2/repository/javax/xml/bind/jaxb-api/2.2.2/jaxb-api-2.2.2.jar:/home/nicoulaj/.m2/repository/com/sun/xml/bind/jaxb-impl/2.2.2/jaxb-impl-2.2.2.jar:/home/nicoulaj/.m2/repository/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar:/home/nicoulaj/.m2/repository/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar:/home/nicoulaj/.m2/repository/junit/junit/4.8.2/junit-4.8.2.jar:/home/nicoulaj/.m2/repository/org/yaml/snakeyaml/1.6/snakeyaml-1.6.jar:/home/nicoulaj/.m2/repository/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar:/home/nicoulaj/.m2/repository/com/beust/jcommander/1.12/jcommander-1.12.jar:/home/nicoulaj/.m2/repository/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar:/home/nicoulaj/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar:/home/nicoulaj/.m2/repository/commons-vfs/commons-vfs/1.0/commons-vfs-1.0.jar:/home/nicoulaj/.m2/repository/de/sven-jacobs/loremipsum/1.0/loremipsum-1.0.jar:/home/nicoulaj/.m2/repository/org/testng/testng/6.0.1/testng-6.0.1.jar:/home/nicoulaj/.m2/repository/httpunit/httpunit/1.7/httpunit-1.7.jar'
+'/home/nicoulaj/projects/mock-webapp/target/checkout/target/classes:/home/nicoulaj/projects/mock-webapp/target/checkout/target/test-classes:/home/nicoulaj/.m2/repository/jtidy/jtidy/4aug2000r7-dev/jtidy-4aug2000r7-dev.jar:/home/nicoulaj/.m2/repository/javax/xml/bind/jaxb-api/2.2.2/jaxb-api-2.2.2.jar:/home/nicoulaj/.m2/repository/com/sun/xml/bind/jaxb-impl/2.2.2/jaxb-impl-2.2.2.jar:/home/nicoulaj/.m2/repository/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar:/home/nicoulaj/.m2/repository/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar:/home/nicoulaj/.m2/repository/junit/junit/4.8.2/junit-4.8.2.jar:/home/nicoulaj/.m2/repository/org/yaml/snakeyaml/1.6/snakeyaml-1.6.jar:/home/nicoulaj/.m2/repository/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar:/home/nicoulaj/.m2/repository/com/beust/jcommander/1.12/jcommander-1.12.jar:/home/nicoulaj/.m2/repository/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar:/home/nicoulaj/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar:/home/nicoulaj/.m2/repository/commons-vfs/commons-vfs/1.0/commons-vfs-1.0.jar:/home/nicoulaj/.m2/repository/org/testng/testng/6.0.1/testng-6.0.1.jar:/home/nicoulaj/.m2/repository/httpunit/httpunit/1.7/httpunit-1.7.jar'
 -encoding
 'UTF-8'
 -protected
 -sourcepath
-'/home/nicoulaj/projects/mock-webapp/src/test/java'
+'/home/nicoulaj/projects/mock-webapp/target/checkout/src/test/java'
 -author
 -bottom
 'Copyright &#169; 2011. All Rights Reserved.'
 -charset
 'UTF-8'
 -d
-'/home/nicoulaj/projects/mock-webapp/target/site/testapidocs'
+'/home/nicoulaj/projects/mock-webapp/target/checkout/target/site/testapidocs'
 -docencoding
 'UTF-8'
 -doctitle
-'mock-webapp 1.0.0-SNAPSHOT Test API'
+'mock-webapp 1.0.0-alpha-1 Test API'
 -link
 '../apidocs'
 -linkoffline
-'http://download.oracle.com/javase/1.5.0/docs/api' '/home/nicoulaj/projects/mock-webapp/target/javadoc-bundle-options'
+'http://download.oracle.com/javase/1.5.0/docs/api' '/home/nicoulaj/projects/mock-webapp/target/checkout/target/javadoc-bundle-options'
 -use
 -version
 -windowtitle
-'mock-webapp 1.0.0-SNAPSHOT Test API'
+'mock-webapp 1.0.0-alpha-1 Test API'
