@@ -7,7 +7,7 @@
 '/home/nicoulaj/projects/mock-webapp/target/checkout/src/main/java:/home/nicoulaj/projects/mock-webapp/target/checkout/target/schemas'
 -author
 -bottom
-'Copyright &#169; 2011. All Rights Reserved.'
+'Copyright &#169; 2011-2012. All Rights Reserved.'
 -charset
 'UTF-8'
 -d
@@ -15,10 +15,10 @@
 -docencoding
 'UTF-8'
 -doctitle
-'mock-webapp 1.0.0-alpha-1 API'
+'mock-webapp 1.0.0-alpha-2 API'
 -linkoffline
 'http://download.oracle.com/javase/1.5.0/docs/api' '/home/nicoulaj/projects/mock-webapp/target/checkout/target/javadoc-bundle-options'
 -use
 -version
 -windowtitle
-'mock-webapp 1.0.0-alpha-1 API'
+'mock-webapp 1.0.0-alpha-2 API'
