@@ -40,7 +40,7 @@ public class DelayActionTest extends AbstractMockWebAppTest {
     /**
      * The safety margin to use when calculating the time elapsed.
      */
-    protected static final int SAFETY_MARGIN = 10;
+    protected static final int TOLERANCE = 50;
 
     /**
      * Provide a list of coherent delays.
@@ -75,7 +75,7 @@ public class DelayActionTest extends AbstractMockWebAppTest {
         final long elapsedTime = System.currentTimeMillis() - startTime;
 
         assertTrue(elapsedTime >= stmt.time);
-        assertTrue(elapsedTime <= stmt.time + SAFETY_MARGIN);
+        assertTrue(elapsedTime <= stmt.time + TOLERANCE);
     }
 
     /**

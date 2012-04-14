@@ -51,7 +51,7 @@ public class RandomDelayActionTest extends DelayActionTest {
         stmt.process(getRequest(webRequest), getResponse(webRequest));
         final long elapsedTime = System.currentTimeMillis() - startTime;
         assertTrue(elapsedTime >= stmt.min);
-        assertTrue(elapsedTime <= stmt.max + SAFETY_MARGIN);
+        assertTrue(elapsedTime <= stmt.max + TOLERANCE);
     }
 
     /**
