@@ -1,5 +1,5 @@
 # Project build directory
-target/
+/target/
 
 # Intellij IDEA project files
 .idea/
@@ -13,5 +13,5 @@ target/
 .classpath
 
 # Maven release plugin files
-pom.xml.releaseBackup
+pom.xml.*
 release.properties
