@@ -20,7 +20,7 @@
   <parent>
     <groupId>net.ju-n</groupId>
     <artifactId>net-ju-n-parent</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.15</version>
   </parent>
 
   <groupId>net.ju-n.benchmark</groupId>
@@ -91,6 +91,7 @@
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
+      <version>6.4</version>
       <scope>test</scope>
     </dependency>
     <dependency>
