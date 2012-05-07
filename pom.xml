@@ -51,6 +51,11 @@
     <url>http://github.com/nicoulaj/mock-webapp/issues</url>
   </issueManagement>
 
+  <ciManagement>
+    <system>Travis-CI</system>
+    <url>http://travis-ci.org/nicoulaj/mock-webapp</url>
+  </ciManagement>
+
   <distributionManagement>
     <site>
       <id>github</id>
